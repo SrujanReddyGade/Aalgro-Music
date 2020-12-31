@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'file:///D:/PlayGround/Flutter/Flutter_Samples/alg_music/flutter_app/lib/ui/SplashScreenView.dart';
 import 'package:flutter_app/utils/AppContstants.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());

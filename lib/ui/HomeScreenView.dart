@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/bloc/HomeScreenBloc.dart';
 import 'package:flutter_app/models/TopAlbums.dart';
 import 'package:flutter_app/utils/AppContstants.dart';
+import 'package:flutter/services.dart';
 
 class HomeScreenView extends StatelessWidget {
   @override
@@ -10,9 +11,10 @@ class HomeScreenView extends StatelessWidget {
     return MaterialApp(
         title: AppConstants.appName,
         theme: ThemeData(
-            primarySwatch: AppConstants.appThemeColor,
+            primarySwatch: AppConstants.createMaterialColor(Color(0xFF2a2d36)),
             visualDensity: VisualDensity.adaptivePlatformDensity,
-            scaffoldBackgroundColor: AppConstants.appThemeColor),
+            scaffoldBackgroundColor:
+                AppConstants.createMaterialColor(Color(0xFF2a2d36))),
         home: Scaffold(
           body: MyHomePage(),
         ),
@@ -58,12 +60,21 @@ class _MyHomePage extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     bloc.fetchAlbums();
   }
 
   @override
   void dispose() {
     bloc.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 
